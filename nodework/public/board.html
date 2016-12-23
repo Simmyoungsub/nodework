@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script  src="https://code.jquery.com/jquery-2.2.4.min.js"  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="js/board.js"></script>
+<title>게시판</title>
+</head>
+<body>
+	<div class="wrapper">
+		<div class="mainContainer">
+			<div class="firstContainer">
+				<table class="boardTable">
+					<tr class="boardHeader">
+						<td>제목</td>
+						<td>글쓴이</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+<script>
+
+window.onload = function(){
+	var b = new board();
+	b.init();
+};
+
+</script>
