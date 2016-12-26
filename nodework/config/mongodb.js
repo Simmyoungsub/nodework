@@ -14,3 +14,18 @@ db.once("open",function(){
 	console.log("Connected to mongod server");
 });
 
+module.exports = {
+	
+		boardGetList : function(id){
+			
+			var resmap = [];
+			resmap = db.collection("board").find({},function(err,res){
+				console.log(res[0].id);
+				console.log(res[0].title);
+			});
+			
+			console.log(resmap);
+			console.log("call complete!");
+		}
+		
+};

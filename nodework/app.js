@@ -48,8 +48,12 @@ app.post("/boardGetList.json",function(req,res){
 	
 	console.log("id : " + id);
 	
+	console.log("before boardGetList");
+	
 	//sql 데이터 가져오기
 	//map으로 반환
 	//console.log(config);
 	config.boardGetList(id);
+	
+	console.log("after boardGetList");
 });
