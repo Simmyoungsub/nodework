@@ -8,7 +8,8 @@ var bodyParser = require('body-parser');
 var mysql = require("mysql");
 var io = require("socket.io")(server);
 var port = process.env.PORT || 3000;
-var config = require(path+"/config/db.js");
+//var config = require(path+"/config/db.js");
+var config = require(path+"/config/mongodb.js");
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended : true }));
