@@ -1,11 +1,18 @@
 var mongoose = require("mongoose");
+mongoose.Promise = global.Promise;
 
-mongoose.connect("mongodb://localhost/board");
+mongoose.connect("localhost:27017/board");
 
 var db = mongoose.connection;
 
-//db.on("error",console.err);
+/*var Schema = mongoose.Schema
+var boardSchema = new Schema({
+	id : String,
+	title : String
+});
 
+var board = mongoose.model("board",boardSchema);
+*/
 db.on("error",function(){
 	console.log("connection error");
 });
@@ -18,14 +25,11 @@ module.exports = {
 	
 		boardGetList : function(id){
 			
-			var resmap = [];
-			resmap = db.collection("board").find({},function(err,res){
-				console.log(res[0].id);
-				console.log(res[0].title);
+			/*board.find({}).exec(function(err,res){
+				console.log(res);
 			});
-			
-			console.log(resmap);
-			console.log("call complete!");
+
+			console.log("call complete!");*/
 		}
 		
 };

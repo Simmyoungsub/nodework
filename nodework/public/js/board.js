@@ -16,7 +16,7 @@ var board = function(){
 		var param = {"id" : "admin"};
 		
 		$.ajax({
-			url : "/boardGetList.json",
+			url : "/board/boardGetList.json",
 			type:"post",
 			data : JSON.stringify(param),
 			contentType : "application/json",
