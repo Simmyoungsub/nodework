@@ -1,0 +1,27 @@
+<!doctype>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<script  src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+		<script type="text/javascript" src="/js/write.js"></script>
+	</head>
+	<body>
+		<div>
+			<input type="text" id="title">
+		</div>
+		<div>
+			<textarea cols="30" rows="10" id="content"></textarea>
+		</div>
+		<div>
+			<a href="#" id="writeBtn">등록</a>
+			<a href="#" id="listBtn">목록</a>
+			<a href="#" id="cancelBtn">취소</a>
+		</div>
+	</body>
+</html>
+<script>
+	$(document).ready(function(){
+		var w = new write();
+		w.init();
+	});
+</script>
