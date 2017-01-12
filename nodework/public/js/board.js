@@ -4,16 +4,21 @@
 
 var board = function(){
 	
-	var boardTable = $(".boardTable");
+	var $boardTable = $(".boardTable tbody"),
+		$pagingWrapper = $(".pagingWrapper");
+	
+	var startPage = "1",
+		currentPage = startPage,
+		endPage = "10";
 	
 	this.init = function(){
-		
 		retreiveBoard();
+		showPaging();
 	};
 	
-	var retreiveBoard = function(){
+	var retreiveBoard = function(currentPage){
 		
-		var param = {"id" : "admin"};
+		var param = {"id" : "admin","currentPage" : currentPage};
 		
 		$.ajax({
 			url : "/board/boardGetList.json",
@@ -21,14 +26,13 @@ var board = function(){
 			data : JSON.stringify(param),
 			contentType : "application/json",
 			success : function(data){
-				displayData(data);
+				displayData(data.result);
 			},
 			error : function(xhr){
 				console.log(xhr);
 			}
 			
 		});
-		
 	};
 	
 	var displayData = function(data){
@@ -51,9 +55,22 @@ var board = function(){
 					seq = td.clone().text(seqValue--);
 					row = tr.clone().append(seq).append(title).append(name).append(regDate);
 				
-				boardTable.append(row);
+				$boardTable.append(row);
 			}
 			
+		}
+	};
+	
+	var showPaging = function(){
+		var a = $("<a href='#'></a>");
+		
+		for(var i=0;i<endPage;i++){
+			var pageNum = a.clone().text(i+1);
+			pageNum.click(function(e){
+				e.preventDefault();
+				retreiveBoard($(this).text());
+			});
+			$pagingWrapper.append(pageNum);
 		}
 	};
 };

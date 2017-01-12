@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <script  src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 <script type="text/javascript" src="/js/board.js"></script>
+<link type="text/css" href="/css/board.css" rel="stylesheet">
 <title>게시판</title>
 </head>
 <body>
@@ -11,13 +12,25 @@
 		<div class="mainContainer">
 			<div class="firstContainer">
 				<table class="boardTable">
-					<tr class="boardHeader">
-						<td>글 번호</td>
-						<td>제목</td>
-						<td>글쓴이</td>
-						<td>등록일</td>
-					</tr>
+					<thead class="boardHeader">
+						<tr>
+							<th class="seq">번호</th>
+							<th class="title">제목</th>
+							<th class="author">글쓴이</th>
+							<th class="regDate">등록일</th>
+						</tr>
+					</thead>
+					<tbody>
+					</tbody>
 				</table>
+			</div>
+			<div class="secondContainer">
+				<div class="pagingWrapper">
+					
+				</div>
+				<div class="buttonWrapper">
+					<a href="#" id="writeButton">쓰기</a>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -26,7 +39,7 @@
 <script>
 
 window.onload = function(){
-	var b = new board();
+	var b = new board(event);
 	b.init();
 };
 

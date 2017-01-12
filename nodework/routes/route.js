@@ -16,11 +16,13 @@ router.post('/boardGetList.json', function(req, res) {
 	
 	console.log("boardGetList");
 	
-	var reqmap = {};
-	
+	var reqmap = {},
+		skipPage = (req.body.currentPage-1)*10,
+		pageSize = 10;
+		
 	reqmap.id=req.body.id;
 	
-	board.find(reqmap,function(err,rows){
+	board.find(reqmap).skip(skipPage).limit(pageSize).exec(function(err,rows){
 		if(err){
 			console.log(err);
 			return false;
@@ -29,7 +31,6 @@ router.post('/boardGetList.json', function(req, res) {
 			return rows;
 		}
 	});
-	
 });
 
 router.post('/boardWrite.json', function(req, res) {

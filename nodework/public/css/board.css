@@ -1,0 +1,7 @@
+table{border-collapse: collapse;}
+table tr td{border:1px solid black;}
+body {width:100%;}
+.seq {width:10%;}
+.title {width:40%;}
+.author{width:20%;}
+.regDate {width:30%;}
