@@ -8,10 +8,10 @@ var board = function(){
 	
 	this.init = function(){
 		
-		callServer();
+		retreiveBoard();
 	};
 	
-	var callServer = function(){
+	var retreiveBoard = function(){
 		
 		var param = {"id" : "admin"};
 		
@@ -21,9 +21,7 @@ var board = function(){
 			data : JSON.stringify(param),
 			contentType : "application/json",
 			success : function(data){
-				
-				console.log(data);
-				
+				displayData(data);
 			},
 			error : function(xhr){
 				console.log(xhr);
@@ -40,27 +38,22 @@ var board = function(){
 		}else{
 			
 			var tr = $("<tr></tr>"),
-			td = $("<td></td>");
+			td = $("<td></td>"),
+			seqValue = data.length;
 			
 			for(var i=0;i<data.length;i++){
 				var item = data[i];
 				
 				var title = td.clone().text(item["title"]),
-					name = td.clone().text(item["name"]),
-					row = tr.clone().append(title).append(name);
+					name = td.clone().text(item["username"]),
+					id = td.clone().text(item["id"]),
+					regDate = td.clone().text(item["regDate"]),
+					seq = td.clone().text(seqValue--);
+					row = tr.clone().append(seq).append(title).append(name).append(regDate);
 				
 				boardTable.append(row);
 			}
 			
 		}
-	};
-	
-	function clone(obj) {
-	    if (null == obj || "object" != typeof obj) return obj;
-	    var copy = obj.constructor();
-	    for (var attr in obj) {
-	        if (obj.hasOwnProperty(attr)) copy[attr] = obj[attr];
-	    }
-	    return copy;
 	};
 };

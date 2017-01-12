@@ -5,7 +5,8 @@ var boardSchema = new Schema({
 	id : String,
 	username : String,
 	title : String,
-	regDate : Date
+	regDate : Date,
+	content : String
 });
 
 module.exports =  mongoose.model('board', boardSchema);
